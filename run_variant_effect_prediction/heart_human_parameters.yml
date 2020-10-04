@@ -1,0 +1,24 @@
+---
+ops: [analyze]
+model: {
+    class: HeartENN,
+    sequence_length: 1000,
+    n_classes_to_predict: 90,
+    non_strand_specific: {
+        use_module: True,
+        mode: mean
+    }
+}
+analyze_sequences: !obj:selene_sdk.predict.AnalyzeSequences {
+    sequence_length: 1000,
+    batch_size: 256,
+    features: !obj:selene_sdk.utils.load_features_list {
+        input_path: ../models/human_chromatin_features.txt
+    },
+    trained_model_path: ../models/human_model_freeze.pth.tar,
+}
+variant_effect_prediction: {
+    save_data: [abs_diffs, predictions]
+}
+random_seed: 1447
+...
