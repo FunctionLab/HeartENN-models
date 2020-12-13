@@ -1,0 +1,28 @@
+---
+ops: [evaluate]
+model: {
+    class: HeartENN, 
+    class_args: {    
+        sequence_length: 1000,
+        n_genomic_features: 90,
+    },
+    non_strand_specific: mean
+}
+sampler: !obj:selene_sdk.samplers.file_samplers.BedFileSampler {
+    filepath: ./data/human_testset.selene.bed, 
+    n_samples: 1409024,
+    sequence_length: 1000,
+    targets_avail: True,
+    n_features: 90
+}
+evaluate_model: !obj:selene_sdk.EvaluateModel {
+    features: !obj:selene_sdk.utils.load_features_list {
+        input_path: ../models/human_chromatin_features.txt 
+    },
+    batch_size: 64,
+    n_test_samples: 1409024,
+    report_gt_feature_n_positives: 50,
+    trained_model_path: ../models/human_model_freeze.pth.tar
+}
+random_seed: 42
+...

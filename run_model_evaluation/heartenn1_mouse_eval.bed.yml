@@ -1,0 +1,30 @@
+---
+ops: [evaluate]
+model: {
+    class: HeartENN, 
+    class_args: {    
+        sequence_length: 1000,
+        n_genomic_features: 94,
+    },
+    non_strand_specific: mean
+}
+sampler: !obj:selene_sdk.samplers.file_samplers.BedFileSampler {
+    filepath: ./data/mouse_testset.selene.bed, 
+    n_samples: 1000000,
+    sequence_length: 1000,
+    targets_avail: True,
+    n_features: 94
+}
+evaluate_model: !obj:selene_sdk.EvaluateModel {
+    features: !obj:selene_sdk.utils.load_features_list {
+        input_path: ../models/mouse_chromatin_features.txt 
+    },
+    batch_size: 64,
+    n_test_samples: 1000000,
+    report_gt_feature_n_positives: 50,
+    trained_model_path: /mnt/home/kchen/Documents/heartenn1_models/HeartENN_models/reopt_training/epochs_lr0.5/train_vep.latest.pth.tar
+    #trained_model_path: /mnt/ceph/users/kchen/cardiac_annotations/mm9/all_heart_data/slurm/train_0806/model_freeze.pth.tar
+    #trained_model_path: ../models/mouse_model_freeze.pth.tar 
+}
+random_seed: 42
+...
