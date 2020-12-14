@@ -15,7 +15,7 @@ If you only need to make comparisons against the predictions published in the ma
 Please post in the Github issues or e-mail Kathy Chen (kc31@princeton.edu) directly with any questions. Note that this repository is still a work-in-progress, with minimal instructions for getting started. We are happy to work with you by email until everything is stable and all documentation is pushed. 
 
 # Getting started
-- Make sure you have `numpy`, `cython`, and `docopt` installed in your conda environment.
+- Make sure you have `numpy`, `cython`, and `docopt` installed in your conda environment. (I've included a `heartenn-env.yml` example conda spec file that you can try using, but in practice I've found environment YAML files aren't easy to use out-of-the-box.)
 - Build Selene: `python setup.py build_ext --inplace`
 - Locally install Selene: `python setup.py install`
 
