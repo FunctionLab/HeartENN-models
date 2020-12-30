@@ -29,6 +29,7 @@ Add the `--cuda` flag if you can run the script on a CUDA-enabled GPU. It will t
 
 After `vep_cli.py` successfully runs, you will see two different output directories within `output`: `human_model` and `mouse_model`. This is because HeartENN includes both chromatin features measured in human and mouse, for which the training is done separately. The generated `.ref` and `.alt` files in these directories are the separate `ref` and `alt` sequence predictions, which are used to compute the `abs_diffs.tsv` file of variant effect predictions (`|alt - ref|`). 
 
+### How to use the output
 To use the results the way we did so in the HeartENN publication, combine the predictions for human and mouse into a single TSV. Example code snippet:
 
 ```
@@ -47,7 +48,7 @@ combined_df = pd.concat([hdf, mdf], axis=1)
 
 Note that the HeartENN chromatin profile names do not specify mouse vs human, so you could update the `hdf` and `mdf` column names to distinguish between the two if desired.
 
-The 'HeartENN score' is the max `abs_diff` value for each variant. 
+The 'HeartENN score' is the max `abs_diff` value across all chromatin features for each variant. 
 
 ## Run model evaluation 
 - You will need to download hg19 and mm9 FASTA files and specify these paths (depending on which HeartENN model you run the evaluation on) as input to the `eval_cli.py` script.
