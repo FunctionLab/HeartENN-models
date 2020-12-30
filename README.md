@@ -10,7 +10,8 @@ git clone --recursive git@github.com:FunctionLab/HeartENN-models.git
 ```
 (If you have problems loading the Selene submodule in this way, you can instead manually clone and load [this branch](https://github.com/kathyxchen/selene/tree/heartenn-branch-0.0.0) of Selene, which contains [one modification](https://github.com/kathyxchen/selene/commit/512dc4d7d194059a97fa8fdeffed5b8bbe2bafe1) to the original release that allows users to load these models with newer versions of PyTorch.)
 
-If you only need to make comparisons against the predictions published in the manuscript, we recommend downloading the full set directly from [this Zenodo record](https://doi.org/10.5281/zenodo.4065588). 
+If you only need to make comparisons against the predictions published in the manuscript, we recommend downloading the full set directly from [this Zenodo record](https://doi.org/10.5281/zenodo.4065588). Please note that variant effect prediction was originally run with the variants specified in hg19 coordinates, but the Supplementary Table provided in the publication specifies hg38 coordinates. To match the two, you'll need to `liftOver` the coordinates in the Zenodo TSVs. You
+will need to combine the human and mouse model TSVs (see ['How to use the output'](https://github.com/FunctionLab/HeartENN-models#how-to-use-the-output)) and get the max score per variant to get the "HeartENN score" referred to in the publication.
 
 Please post in the Github issues or e-mail Kathy Chen (kc31@princeton.edu) directly with any questions. Note that this repository is still a work-in-progress, with minimal instructions for getting started. We are happy to work with you by email until everything is stable and all documentation is pushed. 
 
