@@ -6,9 +6,10 @@ channels:
 dependencies:
   - _libgcc_mutex=0.1=main
   - blas=1.0=mkl
-  - ca-certificates=2020.10.14=0
-  - certifi=2020.6.20=py38_0
+  - ca-certificates=2020.12.8=h06a4308_0
+  - certifi=2020.12.5=py38h06a4308_0
   - cython=0.29.21=py38he6710b0_0
+  - docopt=0.6.2=py38_0
   - intel-openmp=2020.2=254
   - ld_impl_linux-64=2.33.1=h53a641e_7
   - libedit=3.1.20191231=h14c3975_1
@@ -22,7 +23,7 @@ dependencies:
   - ncurses=6.2=he6710b0_1
   - numpy=1.19.2=py38h54aff64_0
   - numpy-base=1.19.2=py38hfa32c7d_0
-  - openssl=1.1.1h=h7b6447c_0
+  - openssl=1.1.1i=h27cfd23_0
   - pip=20.3.1=py38h06a4308_0
   - python=3.8.5=h7579374_1
   - readline=8.0=h7b6447c_0
